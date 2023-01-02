@@ -13,7 +13,7 @@ class HomeController extends Controller
         $courseimage    = Course::take(6)->get();
         return view('welcome', [
             'seriesname' => $seriesImage,
-            'courseimage'   => $courseimage
+            'courses'   => $courseimage
         ]);
 
     }

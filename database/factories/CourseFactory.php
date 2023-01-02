@@ -24,7 +24,7 @@ class CourseFactory extends Factory
             'type'  => rand(0, 1),
             'resources' => rand(1, 5),
             'year' => rand(2011,2022),
-            'price' => 0.00,
+            'price' => rand(0, 10000) / 100,
             'description' => fake()->paragraph,
             'submitted_by' => User::all()->random()->id, // Assumes there are 50 users in the users table
             'link' => fake()->url(),

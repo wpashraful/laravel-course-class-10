@@ -63,8 +63,12 @@ class DatabaseSeeder extends Seeder
 
         $topics = ['Eloquent', 'Validation', 'Refactoring', 'Testing', 'lasttopic'];
         foreach ($topics as $item){
+
+            $slug = strtolower(str_replace('', '-' ,$item));
+
             Topic::create([
-                'name' => $item
+                'name' => $item,
+                'slug' => $slug
             ]);
         }
 

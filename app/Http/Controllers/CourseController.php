@@ -7,8 +7,13 @@ use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
-    public function show($id){
-        $courseid = Course::with(['platform', 'topics', 'authors', 'series'])->findOrFail($id);
-        return  $courseid;
+    public function show($slug){
+        $courses = Course::where('slug', $slug)->with(['platform', 'topics', 'authors', 'series'])->first();
+
+//        return response()->json($courses);
+
+        return  view('course.single', [
+            'couresSingle' => $courses
+        ]);
     }
 }

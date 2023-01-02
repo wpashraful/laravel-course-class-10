@@ -3,6 +3,7 @@
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TopicController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,9 +21,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/', [HomeController::class, 'dynamicimage'])->name('dynamicimage');
+Route::get('/', [HomeController::class, 'dynamicimage'])->name('home');
 
-Route::get('/courses/{id}', [CourseController::class, 'show']);
+Route::get('/courses/{slug}', [CourseController::class, 'show'])->name('course-single');
+Route::get('/courses', [CourseController::class, 'index'])->name('courses');
+Route::get('/topics/{slug}', [TopicController::class, 'index'])->name('topics');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
